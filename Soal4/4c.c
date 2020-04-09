@@ -7,33 +7,34 @@
 
 int main() 
 { 
-	int pipe[2];
+	int pipa[2];
+	pipe(pipa);
+	char *als[] = {"ls", NULL};
+	char *awc[] = {"wc", "-l", NULL}; ;
 	pid_t p; 
 	p = fork();
-
+	
 	//childfork
-	if (p == 0){ 
+	if (p == 0){
+ 
+		dup2(pipa[1], 1);//output
+        	close(pipa[0]);
+        	close(pipa[1]);
 
-        dup2(pipe[1], 1);//output
-        close(pipe[0]);
-        close(pipe[1]);
-
-	char *arg_ls[] = {"ls", NULL};
-        execv("/bin/ls", arg_ls);
+	
+        execv("/bin/ls", als);
 
 	} 
 	else //parent fork 
 	{ 
 
-        	dup2(pipe[0], 0);//input
-        	close(pipe[0]);
-        	close(pipe[1]);
+		dup2(pipa[0], 0);//input
+        	close(pipa[0]);
+        	close(pipa[1]);
 	
-		
-	char *arg_wc[] = {"wc", "-l", NULL};
 	//prints the line count 
 	//word count per kata
-        execv("/usr/bin/wc", arg_wc);
+        execv("/usr/bin/wc", awc);
 	exit(0); 
 	} 
 } 
