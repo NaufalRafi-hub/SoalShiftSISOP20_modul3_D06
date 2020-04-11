@@ -207,6 +207,9 @@ int main() {
 ```
 Pertama jika socket berhasil dibuat akan menampilkan pilihan berupa login dan register, lalu user diminta menginputkan pilihannya dan mengirimkannya ke server. Jika yang dipilih user adalah login maka akan menjalankan fungsi login_akun dan jika yang dipilih register akan menjalankan register_akun. Untuk fungsi login_akun dan register_akun hampir sama dimana akan meminta memasukkan username dan password lalu mengirimkannya ke server. Yang membedakan adalah untuk register akan menerima string register success dari server, sedangkan untuk login akan menerima string login success atau login failed dari server.
 
+![](Soal2/1.png)
+![](Soal2/2.png)
+
 **Kendala:** Pengerjaannya belum selesai dan masih error.
 ### 3. Soal 3
 ### 4. Soal 4
